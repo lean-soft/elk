@@ -1,0 +1,321 @@
+[
+  {
+    "_id": "e8791140-0c43-11e7-bd17-057d6ff34370",
+    "_type": "dashboard",
+    "_source": {
+      "title": "Dockbeat Dashboard",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":6,\"id\":\"CPU-Usage-per-container\",\"panelIndex\":1,\"row\":7,\"size_x\":6,\"size_y\":3,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Docker-summary-metrics\",\"panelIndex\":2,\"row\":3,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top-10-CPU-consumer-containers\",\"panelIndex\":3,\"row\":3,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Containers-network-Usage\",\"panelIndex\":4,\"row\":10,\"size_x\":6,\"size_y\":5,\"type\":\"visualization\"},{\"size_x\":12,\"size_y\":2,\"panelIndex\":5,\"type\":\"visualization\",\"id\":\"Docker-server-stats\",\"col\":1,\"row\":1}]",
+      "optionsJSON": "{\"darkTheme\":false}",
+      "uiStateJSON": "{\"P-1\":{\"vis\":{\"legendOpen\":true}},\"P-3\":{\"vis\":{\"legendOpen\":false}},\"P-4\":{\"vis\":{\"legendOpen\":false}},\"P-5\":{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":2,\"direction\":\"asc\"}}}}}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "Docker-blkio-metrics",
+    "_type": "search",
+    "_source": {
+      "title": "Docker blkio metrics",
+      "hits": 0,
+      "description": "",
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "columns": [
+        "beat.name",
+        "containerName",
+        "blkio.total_ps",
+        "blkio.read_ps",
+        "blkio.write_ps"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\n  \"index\": \"dockbeat-*\",\n  \"highlight\": {\n    \"pre_tags\": [\n      \"@kibana-highlighted-field@\"\n    ],\n    \"post_tags\": [\n      \"@/kibana-highlighted-field@\"\n    ],\n    \"fields\": {\n      \"*\": {}\n    },\n    \"fragment_size\": 2147483647\n  },\n  \"filter\": [],\n  \"query\": {\n    \"query_string\": {\n      \"query\": \"type: blkio\",\n      \"analyze_wildcard\": true\n    }\n  }\n}"
+      }
+    }
+  },
+  {
+    "_id": "Docker-container-info",
+    "_type": "search",
+    "_source": {
+      "title": "Docker container info",
+      "hits": 0,
+      "description": "",
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "columns": [
+        "beat.name",
+        "containerName",
+        "container.image",
+        "container.id",
+        "container.command",
+        "container.ports"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\n  \"index\": \"dockbeat-*\",\n  \"highlight\": {\n    \"pre_tags\": [\n      \"@kibana-highlighted-field@\"\n    ],\n    \"post_tags\": [\n      \"@/kibana-highlighted-field@\"\n    ],\n    \"fields\": {\n      \"*\": {}\n    },\n    \"fragment_size\": 2147483647\n  },\n  \"filter\": [],\n  \"query\": {\n    \"query_string\": {\n      \"query\": \"type: container\",\n      \"analyze_wildcard\": true\n    }\n  }\n}"
+      }
+    }
+  },
+  {
+    "_id": "Docker-cpu-metrics",
+    "_type": "search",
+    "_source": {
+      "title": "Docker cpu metrics",
+      "hits": 0,
+      "description": "",
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "columns": [
+        "beat.name",
+        "containerName",
+        "cpu.totalUsage",
+        "cpu.usageInKernelmode",
+        "cpu.usageInUsermode",
+        "cpu.percpuUsage.cpu0",
+        "cpu.percpuUsage.cpu1",
+        "cpu.percpuUsage.cpu2",
+        "cpu.percpuUsage.cpu3"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\n  \"index\": \"dockbeat-*\",\n  \"highlight\": {\n    \"pre_tags\": [\n      \"@kibana-highlighted-field@\"\n    ],\n    \"post_tags\": [\n      \"@/kibana-highlighted-field@\"\n    ],\n    \"fields\": {\n      \"*\": {}\n    },\n    \"fragment_size\": 2147483647\n  },\n  \"filter\": [],\n  \"query\": {\n    \"query_string\": {\n      \"query\": \"type: cpu\",\n      \"analyze_wildcard\": true\n    }\n  }\n}"
+      }
+    }
+  },
+  {
+    "_id": "Docker-memory-metrics",
+    "_type": "search",
+    "_source": {
+      "title": "Docker memory metrics",
+      "hits": 0,
+      "description": "",
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "columns": [
+        "beat.name",
+        "containerName",
+        "memory.usage",
+        "memory.usage_p",
+        "memory.maxUsage",
+        "memory.limit",
+        "memory.failcnt"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\n  \"index\": \"dockbeat-*\",\n  \"highlight\": {\n    \"pre_tags\": [\n      \"@kibana-highlighted-field@\"\n    ],\n    \"post_tags\": [\n      \"@/kibana-highlighted-field@\"\n    ],\n    \"fields\": {\n      \"*\": {}\n    },\n    \"fragment_size\": 2147483647\n  },\n  \"filter\": [],\n  \"query\": {\n    \"query_string\": {\n      \"query\": \"type: memory\",\n      \"analyze_wildcard\": true\n    }\n  }\n}"
+      }
+    }
+  },
+  {
+    "_id": "Docker-network-metrics",
+    "_type": "search",
+    "_source": {
+      "title": "Docker network metrics",
+      "hits": 0,
+      "description": "",
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "columns": [
+        "beat.name",
+        "containerName",
+        "net.name",
+        "net.rxBytes_ps",
+        "net.rxDropped_ps",
+        "net.rxErrors_ps",
+        "net.rxPackets_ps",
+        "net.txBytes_ps",
+        "net.txDropped_ps",
+        "net.txErrors_ps",
+        "net.txPackets_ps"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\n  \"index\": \"dockbeat-*\",\n  \"highlight\": {\n    \"pre_tags\": [\n      \"@kibana-highlighted-field@\"\n    ],\n    \"post_tags\": [\n      \"@/kibana-highlighted-field@\"\n    ],\n    \"fields\": {\n      \"*\": {}\n    },\n    \"fragment_size\": 2147483647\n  },\n  \"filter\": [],\n  \"query\": {\n    \"query_string\": {\n      \"query\": \"type: net\",\n      \"analyze_wildcard\": true\n    }\n  }\n}"
+      }
+    }
+  },
+  {
+    "_id": "Default-Search",
+    "_type": "search",
+    "_source": {
+      "title": "Default Search",
+      "hits": 0,
+      "description": "",
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "columns": [
+        "method",
+        "type",
+        "path",
+        "responsetime",
+        "status",
+        "query"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-*\",\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"fragment_size\":2147483647},\"filter\":[],\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}"
+      }
+    }
+  },
+  {
+    "_id": "Containers-network-Usage",
+    "_type": "visualization",
+    "_source": {
+      "title": "Containers network Usage",
+      "savedSearchId": "Docker-network-metrics",
+      "description": "",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\n  \"filter\": []\n}"
+      },
+      "visState": "{\n  \"type\": \"line\",\n  \"params\": {\n    \"shareYAxis\": true,\n    \"addTooltip\": true,\n    \"addLegend\": true,\n    \"showCircles\": true,\n    \"smoothLines\": false,\n    \"interpolate\": \"linear\",\n    \"scale\": \"linear\",\n    \"drawLinesBetweenPoints\": true,\n    \"radiusRatio\": 9,\n    \"times\": [],\n    \"addTimeMarker\": false,\n    \"defaultYExtents\": false,\n    \"setYExtents\": false,\n    \"yAxis\": {}\n  },\n  \"aggs\": [\n    {\n      \"id\": \"1\",\n      \"type\": \"avg\",\n      \"schema\": \"metric\",\n      \"params\": {\n        \"field\": \"net.rxBytes_ps\"\n      }\n    },\n    {\n      \"id\": \"2\",\n      \"type\": \"date_histogram\",\n      \"schema\": \"segment\",\n      \"params\": {\n        \"field\": \"@timestamp\",\n        \"interval\": \"auto\",\n        \"customInterval\": \"2h\",\n        \"min_doc_count\": 1,\n        \"extended_bounds\": {}\n      }\n    },\n    {\n      \"id\": \"3\",\n      \"type\": \"avg\",\n      \"schema\": \"metric\",\n      \"params\": {\n        \"field\": \"net.txBytes_ps\"\n      }\n    }\n  ],\n  \"listeners\": {}\n}",
+      "version": 1
+    }
+  },
+  {
+    "_id": "Containers-memory-Usage",
+    "_type": "visualization",
+    "_source": {
+      "title": "Containers memory Usage",
+      "savedSearchId": "Docker-memory-metrics",
+      "description": "",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\n  \"filter\": []\n}"
+      },
+      "visState": "{\n  \"type\": \"line\",\n  \"params\": {\n    \"shareYAxis\": true,\n    \"addTooltip\": true,\n    \"addLegend\": true,\n    \"showCircles\": true,\n    \"smoothLines\": false,\n    \"interpolate\": \"linear\",\n    \"scale\": \"linear\",\n    \"drawLinesBetweenPoints\": true,\n    \"radiusRatio\": 9,\n    \"times\": [],\n    \"addTimeMarker\": false,\n    \"defaultYExtents\": false,\n    \"setYExtents\": false,\n    \"yAxis\": {}\n  },\n  \"aggs\": [\n    {\n      \"id\": \"1\",\n      \"type\": \"avg\",\n      \"schema\": \"metric\",\n      \"params\": {\n        \"field\": \"memory.usage\"\n      }\n    },\n    {\n      \"id\": \"2\",\n      \"type\": \"avg\",\n      \"schema\": \"metric\",\n      \"params\": {\n        \"field\": \"memory.limit\"\n      }\n    },\n    {\n      \"id\": \"3\",\n      \"type\": \"date_histogram\",\n      \"schema\": \"segment\",\n      \"params\": {\n        \"field\": \"@timestamp\",\n        \"interval\": \"auto\",\n        \"customInterval\": \"2h\",\n        \"min_doc_count\": 1,\n        \"extended_bounds\": {}\n      }\n    }\n  ],\n  \"listeners\": {}\n}",
+      "version": 1
+    }
+  },
+  {
+    "_id": "CPU-Usage-per-container",
+    "_type": "visualization",
+    "_source": {
+      "title": "CPU Usage per container",
+      "visState": "{\"title\":\"CPU Usage per container\",\"type\":\"area\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"interpolate\":\"linear\",\"mode\":\"stacked\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"smoothLines\":false,\"times\":[],\"yAxis\":{},\"legendPosition\":\"right\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"cpu.totalUsage\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"containerName.keyword\",\"size\":999,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "Docker-cpu-metrics",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top-10-network-consumer-containers",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top 10 network consumer containers",
+      "visState": "{\"title\":\"Top 10 network consumer containers\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"grouped\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{},\"legendPosition\":\"right\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"net.rxBytes_ps\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"net.txBytes_ps\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"containerName.keyword\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "Docker-network-metrics",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top-10-memory-consumer-containers",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top 10 memory consumer containers",
+      "visState": "{\"title\":\"Top 10 memory consumer containers\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{},\"legendPosition\":\"right\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"memory.usage_p\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"containerName.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "Docker-memory-metrics",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Docker-server-stats",
+    "_type": "visualization",
+    "_source": {
+      "title": "Docker server stats",
+      "visState": "{\"title\":\"Docker server stats\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"containerID.keyword\",\"customLabel\":\"Containers\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"beat.hostname.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Hostname\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"cpu.totalUsage\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"memory.usage_p\"}},{\"id\":\"5\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"net.rxBytes_ps\"}},{\"id\":\"6\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"net.txBytes_ps\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"dockbeat-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Docker-summary-metrics",
+    "_type": "visualization",
+    "_source": {
+      "title": "Docker summary metrics",
+      "visState": "{\"title\":\"Docker summary metrics\",\"type\":\"metric\",\"params\":{\"fontSize\":\"40\",\"handleNoResults\":true},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"containerID.keyword\",\"customLabel\":\"Container Count\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"cpu.totalUsage\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"memory.usage_p\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"net.rxBytes_ps\"}},{\"id\":\"5\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"net.txBytes_ps\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[],\"index\":\"dockbeat-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"type:*\"}},\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "Top-containers",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top containers",
+      "visState": "{\"title\":\"Top containers\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"cpu.totalUsage\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"memory.usage_p\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"net.rxBytes_ps\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"net.txBytes_ps\"}},{\"id\":\"5\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"beat.hostname.keyword\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}},{\"id\":\"6\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"containerName.keyword\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"dockbeat-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top-10-CPU-consumer-containers",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top 10 CPU consumer containers",
+      "visState": "{\"title\":\"Top 10 CPU consumer containers\",\"type\":\"histogram\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"mode\":\"stacked\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"times\":[],\"yAxis\":{},\"legendPosition\":\"right\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"cpu.totalUsage\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"containerName.keyword\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Container Descending\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "Docker-cpu-metrics",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Containers-CPU-Usage",
+    "_type": "visualization",
+    "_source": {
+      "title": "Containers CPU Usage",
+      "savedSearchId": "Docker-cpu-metrics",
+      "description": "",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\n  \"filter\": []\n}"
+      },
+      "visState": "{\n  \"type\": \"area\",\n  \"params\": {\n    \"shareYAxis\": true,\n    \"addTooltip\": true,\n    \"addLegend\": true,\n    \"smoothLines\": false,\n    \"scale\": \"linear\",\n    \"interpolate\": \"linear\",\n    \"mode\": \"stacked\",\n    \"times\": [],\n    \"addTimeMarker\": false,\n    \"defaultYExtents\": false,\n    \"setYExtents\": false,\n    \"yAxis\": {}\n  },\n  \"aggs\": [\n    {\n      \"id\": \"1\",\n      \"type\": \"avg\",\n      \"schema\": \"metric\",\n      \"params\": {\n        \"field\": \"cpu.usageInKernelmode\"\n      }\n    },\n    {\n      \"id\": \"2\",\n      \"type\": \"avg\",\n      \"schema\": \"metric\",\n      \"params\": {\n        \"field\": \"cpu.usageInUsermode\"\n      }\n    },\n    {\n      \"id\": \"3\",\n      \"type\": \"date_histogram\",\n      \"schema\": \"segment\",\n      \"params\": {\n        \"field\": \"@timestamp\",\n        \"interval\": \"auto\",\n        \"customInterval\": \"2h\",\n        \"min_doc_count\": 1,\n        \"extended_bounds\": {}\n      }\n    }\n  ],\n  \"listeners\": {}\n}",
+      "version": 1
+    }
+  }
+]

@@ -1,0 +1,51 @@
+version: '2'
+
+services:
+  elasticsearch:
+    image: harbor-bj.devopshub.cn/elastic/elasticsearch:5.2.2
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - $PWD/dockerfiles/elasticsearch/elasticsearch.yml:/opt/elasticsearch/config/elasticsearch.yml
+    environment:
+      ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+    restart: always
+  logstash:
+    depends_on:
+      - elasticsearch
+    image: harbor-bj.devopshub.cn/elastic/logstash:5.2.2
+    ports:
+      - "5000:5000"
+      - "5000:5000/udp"
+    environment:
+      LOGSPOUT: ignore 
+    volumes:
+      - $PWD/dockerfiles/logstash/logstash.conf:/etc/logstash.conf
+    command: -f /etc/logstash.conf
+  kibana:
+    depends_on:
+      - elasticsearch
+    image: harbor-bj.devopshub.cn/elastic/kibana:5.2.2
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_URL: "http://elasticsearch:9200"
+    volumes:
+      - $PWD/dockerfiles/kibana/kibana.yml:/opt/kibana/config/kibana.yml
+  logspout:
+    depends_on:
+      - logstash
+    image: harbor-bj.devopshub.cn/elastic/logspout:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: syslog://logstash:5000
+  dockbeat:
+    depends_on:
+      - elasticsearch
+    image: harbor-bj.devopshub.cn/elastic/dockbeat:latest
+    environment:
+      LOGSPOUT: ignore 
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
