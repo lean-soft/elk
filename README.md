@@ -82,7 +82,7 @@
 <h3>第七步 - 查看数据</h3>
 点击Discover查看数据
 
-![alt text](./images/discover.png)
+![alt text](./images/kibana-discover.png)
 
 
 <h3>第八步 - 将logstash以及dockbeat部署到更多需要被监控的节点中（Docker主机）</h3>
