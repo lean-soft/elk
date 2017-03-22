@@ -58,8 +58,11 @@
     docker ps
 
 ![alt text](./images/docker-ps.png)
+
 <h3>第四步 - 打开kibana进入管理配置界面</h3>
+
 打开浏览器,输入http://ip:5601
+
 ![alt text](./images/kibana-manage-add-index-logstash.png)
 
 <h3>第五步 - 配置logstash索引</h3>
@@ -75,11 +78,9 @@
  2. 输入dockbeat-* 
  3. Time-field name选择@timestamp 
  4. 点击create
-![alt text](./images/kibana-manage-add-index-dockbeat.png)
 
 <h3>第七步 - 查看数据</h3>
 点击Discover查看数据
-![alt text](./images/kibana-discover.png)
 
 <h3>第八步 - 将logstash以及dockbeat部署到更多的docker主机上</h3>
 运行logspout收集container日志
