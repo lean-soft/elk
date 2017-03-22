@@ -95,6 +95,7 @@
 
 
 运行dockbeat收集服务器性能数据
+
 **注意：由于此容器使用volumn映射添加了dockbeat.yml到容器中，所以在运行此容器之前需要使用git克隆本代码到需要被监控的主机并修改配置文件，然后使用以下命令运行此容器。**
 
 配置dockbeat.yml, 设置elasticsearch主机地址
@@ -116,8 +117,16 @@
 
 <h3>第十步 - 通过kikana配置图表（统计CPU使用最高的前10个容器环境）</h3>
 
+点击Visualize - Vertical bar chart
+
 ![alt text](./images/kibana-visualize-vertical-bar-chart.png)
+
+选择Index - dockbeat-*
+
 ![alt text](./images/kibana-visualize-select-index.png)
+
+配置图表，显示CPU使用较高的前10个容器
+
 ![alt text](./images/kibana-visualize-top10cpu.png)
 
 
