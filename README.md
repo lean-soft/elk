@@ -1,5 +1,17 @@
 本实例中使用ELK最新版本5.2.2 搭配dockbeat以及logspout用来分别收集docker host环境信息，以及应用信息，并介绍如何使用Kibana对数据进行整理以及展示。
 
+包含两个compose文件，请根据自己的需求选择：
+
+<table>
+<tr>
+<td>docker-compose.yml</td>
+<td>包含kibana、elastic、logstash基础环境，以及logspout，dockbeat收集数据</td>
+</tr>
+<tr>
+<td>docker-elk-only.yml</td>
+<td>包含kibana、elastic、logstash基础环境</td>
+</tr>
+</table>
 
 <h3>第一步 - 在需要运行ELK Host主机上修改虚拟内存。</h3>
 
