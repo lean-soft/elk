@@ -1,6 +1,8 @@
-由于在linux系统上，elasticsearch默认使用hybrid mmapfs / niofs来存储索引文件，因此操作系统默认会限制mmap，所以可能会导致内存溢出的问题，所以我们可以通过以下设置来增加mmap限制。
 
-<h3>第一步 - 在elk host主机上修改虚拟内存。</h3>
+
+<h3>第一步 - 在需要运行ELK Host主机上修改虚拟内存。</h3>
+
+由于在linux系统上，elasticsearch默认使用hybrid mmapfs / niofs来存储索引文件，因此操作系统默认会限制mmap，所以可能会导致内存溢出的问题，所以我们可以通过以下设置来增加mmap限制。
 
     nano /etc/sysctl.conf 
 
@@ -11,11 +13,11 @@
 
     git clone https://github.com/lean-soft/elk.git
 
-<h3>第三步 - 通过Compose命令运行elk以及对应组件。</h3>
+<h3>第三步 - 通过Compose运行ELK以及对应组件。</h3>
 <table>
 		<tr>
 		<td>
-		组建名称
+		组件名称
 		</td>
 		<td>官方说明</td>
 		</tr>
@@ -48,8 +50,12 @@
 运行ELK所有组建：
 
     compose up -d
+    
+查看Containers运行状态
 
-<h3>第四步 - 打开kibana查看是否运行成功。</h3>
+    docker ps
+
+<h3>第四步 - 打开kibana进入管理配置界面</h3>
 打开浏览器,输入http://ip:5601
 
 <h3>第五步 - 配置logstash索引</h3>
@@ -84,6 +90,7 @@
 <h3>第十步 - 通过kikana配置图表</h3>
 
 <h3>第十一步 - 配置仪表盘</h3>
+
 
 
 
