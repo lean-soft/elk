@@ -8,6 +8,7 @@
     nano /etc/sysctl.conf 
 
 添加配置：vm.max_map_count=262144，ctrl+x 保存退出
+![alt text](./images/vm-mmap-update.png)
 
 
 <h3>第二步 - 克隆当前代码到docker主机。</h3>
@@ -50,14 +51,16 @@
 
 运行ELK所有组建：
 
-    compose up -d
+    docker-compose up -d
     
 查看Containers运行状态
 
     docker ps
 
+![alt text](./images/docker-ps.png)
 <h3>第四步 - 打开kibana进入管理配置界面</h3>
 打开浏览器,输入http://ip:5601
+![alt text](./images/kibana-manage-add-index-logstash.png)
 
 <h3>第五步 - 配置logstash索引</h3>
 
@@ -72,9 +75,11 @@
  2. 输入dockbeat-* 
  3. Time-field name选择@timestamp 
  4. 点击create
+![alt text](./images/kibana-manage-add-index-dockbeat.png)
 
 <h3>第七步 - 查看数据</h3>
 点击Discover查看数据
+![alt text](./images/kibana-discover.png)
 
 <h3>第八步 - 将logstash以及dockbeat部署到更多的docker主机上</h3>
 运行logspout收集container日志
