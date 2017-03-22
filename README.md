@@ -94,7 +94,17 @@
     --volume=/var/run/docker.sock:/var/run/docker.sock harbor-bj.devopshub.cn/elastic/logspout:latest syslog://[IP Address]:5000
 
 
-运行dockbeat收集服务器性能数据。
+运行dockbeat收集服务器性能数据
+**注意：由于此容器使用volumn映射添加了dockbeat.yml到容器中，所以在运行此容器之前需要使用git克隆本代码到需要被监控的主机并修改配置文件，然后使用以下命令运行此容器。**
+
+配置dockbeat.yml, 设置elasticsearch主机地址
+
+    cd elk/dockerfiles/dockbeat/
+    vim dockbeat.yml
+
+![alt text](./images/shell-dockbeat-update-ip.png)
+
+修改完成后点击esc, 输入:wq保存并退出。
 <table><tr><td>DockerHostName</td><td>当前被监控主机的显示名称，可以通过在主机上运行hostname命令来获取。</td></tr>
 </table>
 
@@ -116,6 +126,7 @@
 ![alt text](./images/kibana-dashboard-add.png)
 ![alt text](./images/kibana-dashboard-select-visualize.png)
 ![alt text](./images/kibana-dashboard-save.png)
+
 
 
 
