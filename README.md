@@ -110,6 +110,9 @@
 
 <h3>第十一步 - 配置仪表盘</h3>
 
+![alt text](./images/kibana-dashboard-add.png)
+![alt text](./images/kibana-dashboard-select-visualize.png)
+![alt text](./images/kibana-dashboard-save.png)
 
 
 
