@@ -99,7 +99,14 @@
 
 <h3>第九步 - 通过kibana查看其他Dcoker Host数据数据是否已经收集到</h3>
 
+![alt text](./images/kibana-discover-hosts.png)
+
 <h3>第十步 - 通过kikana配置图表</h3>
+
+![alt text](./images/kibana-visualize-vertical-bar-chart.png)
+![alt text](./images/kibana-visualize-select-index.png)
+![alt text](./images/kibana-visualize-top10cpu.png)
+
 
 <h3>第十一步 - 配置仪表盘</h3>
 
