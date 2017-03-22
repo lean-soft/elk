@@ -100,18 +100,18 @@
 
     docker run -d --hostname [DockerHostName]--name dockerbeat --volume=$PWD/dockerfiles/dockbeat/dockbeat.yml:/etc/dockbeat/dockbeat.yml --volume=/var/run/docker.sock:/var/run/docker.sock harbor-bj.devopshub.cn/elastic/dockbeat:latest
 
-<h3>第九步 - 通过kibana查看其他Dcoker Host数据数据是否已经收集到</h3>
+<h3>第九步 - 通过kibana查看其他Dcoker Host数据数据是否已经收集到，如果这里显示多台主机则说明，其他Docker主机已经成功接入</h3>
 
 ![alt text](./images/kibana-discover-hosts.png)
 
-<h3>第十步 - 通过kikana配置图表</h3>
+<h3>第十步 - 通过kikana配置图表（统计CPU使用最高的前10个容器环境）</h3>
 
 ![alt text](./images/kibana-visualize-vertical-bar-chart.png)
 ![alt text](./images/kibana-visualize-select-index.png)
 ![alt text](./images/kibana-visualize-top10cpu.png)
 
 
-<h3>第十一步 - 配置仪表盘</h3>
+<h3>第十一步 - 配置仪表盘（添加统计图表到仪表盘）</h3>
 
 ![alt text](./images/kibana-dashboard-add.png)
 ![alt text](./images/kibana-dashboard-select-visualize.png)
