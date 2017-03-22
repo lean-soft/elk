@@ -1,5 +1,4 @@
 <h3>第一步 - 在elk host主机上修改虚拟内存。</h3>
-运行命令：
 
     nano /etc/sysctl.conf 
 
@@ -7,7 +6,6 @@
 
 
 <h3>第二步 - 克隆当前代码到docker主机。</h3>
-运行命令：
 
     git clone https://github.com/lean-soft/elk.git
 
