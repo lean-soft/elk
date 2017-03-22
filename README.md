@@ -84,8 +84,7 @@
 
 <h3>第八步 - 将logstash以及dockbeat部署到更多需要被监控的节点中（Docker主机）</h3>
 运行logspout收集容器日志。
-<table><tr><td>IP Address</td><td>Logstash服务器IP地址，通过5000端口发送docker主机信息到Logstash，Logstash经过数据处理，发送到Elastic</td></tr>
-<tr><td></td><td></td></tr>
+<table><tr><td>IP Address</td><td>Logstash服务器IP地址，通过5000端口发送docker主机信息到Logstash</td></tr>
 </table>
 
     docker run -d --name="logspout"
@@ -94,7 +93,6 @@
 
 运行dockbeat收集服务器性能数据。
 <table><tr><td>DockerHostName</td><td>当前被监控主机的显示名称，可以通过在主机上运行hostname命令来获取。</td></tr>
-<tr><td></td><td></td></tr>
 </table>
 
     docker run -d --hostname [DockerHostName]--name dockerbeat --volume=$PWD/dockerfiles/dockbeat/dockbeat.yml:/etc/dockbeat/dockbeat.yml --volume=/var/run/docker.sock:/var/run/docker.sock harbor-bj.devopshub.cn/elastic/dockbeat:latest
